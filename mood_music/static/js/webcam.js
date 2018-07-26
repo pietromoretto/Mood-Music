@@ -57,49 +57,6 @@ navigator.mediaDevices.getUserMedia({ video: true })
   //console.log(err.name + ": " + err.message);
 });
 
-
-
-
-/*
-
-// The getUserMedia interface is used for handling camera input.
-// Some browsers need a prefix so here we're covering all the options
-navigator.getMedia = (navigator.getUserMedia ||
-                    navigator.webkitGetUserMedia ||
-                    navigator.mozGetUserMedia);
-
-
-if(!navigator.getMedia){
-  displayErrorMessage("Your browser doesn't have support for the navigator.getUserMedia interface.");
-}
-else{
-  // Request the camera.
-  navigator.getMedia(
-    {
-      video: true
-    },
-    // Success Callback
-    function(stream){
-      // Create an object URL for the video stream and
-      // set it as src of our HTLM video element.
-      video.src = window.URL.createObjectURL(stream);
-
-      // Play the video element to start the stream.
-      video.play();
-      video.onplay = function() {
-        showVideo();
-      };
-
-    },
-    // Error Callback
-    function(err){
-      displayErrorMessage("There was an error with accessing the camera stream: " + err.name, err);
-    }
-  );
-
-}*/
-
-
 // Mobile browsers cannot play video without user input,
 // so here we're using a button to start it manually.
 start_camera.addEventListener("click", function(e){
@@ -153,6 +110,49 @@ delete_photo_btn.addEventListener("click", function(e){
 });
 
 
+upload_photo_btn.addEventListener("click", function(e){
+  e.preventDefault();
+
+  var url = "/result"
+  var base64Src = snap.getAttribute("src");
+  var base64ImageContent = base64Src.replace(/^data:image\/(png|jpg);base64,/, "");
+  var blob = base64ToBlob(base64ImageContent, 'image/png');
+  var formData = new FormData();
+  formData.append('snapshot', blob);
+
+  $.ajax({
+    url: url,
+    type: "POST",
+    cache: false,
+    contentType: false,
+    processData: false,
+    enctype: 'multipart/form-data',
+    data: formData
+  }).done(function(e){
+      console.log('done!');
+      document.location.href = url;
+  });
+
+
+  /*
+  var form = $('#fileUploadForm')[0];
+  var data = new FormData(form);
+  data.append('snapshot', 'hellpz');//image.getAttribute('src'));
+
+  $.ajax({
+    url: "/result",
+    data: data,
+    cache: false,
+    contentType: false,
+    processData: false,
+    enctype: 'multipart/form-data',
+    method: 'POST',
+    type: 'POST', // For jQuery < 1.9
+    success: function(data){
+        alert(data);
+    }
+  });*/
+});
 
 function showVideo(){
   // Display the video stream and the controls.
@@ -206,4 +206,27 @@ function hideUI(){
   video.classList.add("hide");
   snap.classList.add("hide");
   error_message.classList.add("hide");
+}
+
+function base64ToBlob(base64, mime){
+    // Helper function to convert a base64 image to Blob
+    mime = mime || '';
+    var sliceSize = 1024;
+    var byteChars = window.atob(base64);
+    var byteArrays = [];
+
+    for (var offset = 0, len = byteChars.length; offset < len; offset += sliceSize) {
+        var slice = byteChars.slice(offset, offset + sliceSize);
+
+        var byteNumbers = new Array(slice.length);
+        for (var i = 0; i < slice.length; i++) {
+            byteNumbers[i] = slice.charCodeAt(i);
+        }
+
+        var byteArray = new Uint8Array(byteNumbers);
+
+        byteArrays.push(byteArray);
+    }
+
+    return new Blob(byteArrays, {type: mime});
 }

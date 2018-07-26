@@ -34,16 +34,14 @@
         <a id="take-photo" title="Take Photo" class="btn-floating btn-large waves-effect waves-light black"><i class="material-icons">camera_alt</i></a>
       </div>
       <div class="col s4">
-        <a id="upload-photo" title="Let's GO" class="btn-floating btn-large waves-effect waves-light green darken-1 disabled"><i class="material-icons">send</i></a>
+        <a href="{% url 'result' %}" id="upload-photo" title="Let's GO" class="btn-floating btn-large waves-effect waves-light green darken-1 disabled"><i class="material-icons">send</i></a>
       </div>
     </div>
 
     <!-- Hidden canvas element. Used for taking snapshot of video. -->
     <canvas class="hide"></canvas>
 
-    <form action="." method="post" enctype="multipart/form-data" style="display: none">
-      {% csrf_token %}
-      <a type="submit"><i class="material-icons">send</i></a>
+    <form action="/result" method="post" enctype="multipart/form-data" class="hide" id="fileUploadForm">
     </form>
     <br>
   </div>
