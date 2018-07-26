@@ -25,7 +25,7 @@ SECRET_KEY = 'opjkw8p2*g+co#fo(+j-&t6aodu4u)^cbx7ytj$6^4635q#@r+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['moodmusic.pythonanywhere.com']
 
 
 # Application definition
