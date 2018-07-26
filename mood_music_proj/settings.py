@@ -25,7 +25,7 @@ SECRET_KEY = 'opjkw8p2*g+co#fo(+j-&t6aodu4u)^cbx7ytj$6^4635q#@r+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['moodmusic.pythonanywhere.com']
+ALLOWED_HOSTS = ['moodmusic.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -115,6 +115,7 @@ USE_L10N = True
 USE_TZ = True
 
 LOGIN_REDIRECT_URL = '/'
+SECURE_SSL_REDIRECT = True  # Works only in production
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
