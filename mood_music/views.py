@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.core.files.storage import FileSystemStorage
 from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime
+from .emotion_recognition import emotion_recognition
+from django.conf import settings
+import os
 
 
 def index(request):
@@ -13,6 +16,13 @@ def result(request):
     if request.method == 'POST' and request.FILES['snapshot']:
         snapshot = request.FILES['snapshot']
         fs = FileSystemStorage()
-        filename = fs.save('snap-'+datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3], snapshot)
-        print(filename)
+
+        # Save file with hours, minutes, seconds, milliseconds (first 3 digits)
+        filename = fs.save('snap-' + datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3], snapshot)
+        filepath = os.path.join(settings.BASE_DIR, 'media', filename)
+
+        print(emotion_recognition(filepath))
+
+        if os.path.exists(filepath):
+            os.remove(filepath)
     return render(request, 'mood_music/result.html')
