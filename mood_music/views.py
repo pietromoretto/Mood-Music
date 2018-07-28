@@ -3,11 +3,13 @@ from django.core.files.storage import FileSystemStorage
 from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime
 from .emotion_recognition import emotion_recognition
+from .tracks_info import get_tracks_info
 from django.conf import settings
 import os
 
 # Global variable to solve problems with value due to multiple renderings
 emotion = ""
+tracks_info = []
 
 
 def index(request):
@@ -16,7 +18,7 @@ def index(request):
 
 @csrf_exempt
 def result(request):
-    global emotion
+    global emotion, tracks_info
     if request.method == 'POST' and request.FILES['snapshot']:
         snapshot = request.FILES['snapshot']
         fs = FileSystemStorage()
@@ -30,4 +32,10 @@ def result(request):
         if os.path.exists(filepath):
             os.remove(filepath)
 
-    return render(request, 'mood_music/result.html', {'emotion': emotion})
+        tracks_info = get_tracks_info(emotion)
+
+    context = {
+        'emotion': emotion,
+        'tracks_info': tracks_info
+    }
+    return render(request, 'mood_music/result.html', context)

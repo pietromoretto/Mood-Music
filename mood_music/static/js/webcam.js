@@ -14,6 +14,7 @@ if (navigator.mediaDevices === undefined) {
   navigator.mediaDevices = {};
 }
 
+
 // Some browsers partially implement mediaDevices. We can't just assign an object
 // with getUserMedia as it would overwrite existing properties.
 // Here, we will just add the getUserMedia property if it's missing.
@@ -36,6 +37,7 @@ if (navigator.mediaDevices.getUserMedia === undefined) {
   }
 }
 
+
 navigator.mediaDevices.getUserMedia({ video: true })
 .then(function(stream) {
   // Older browsers may not have srcObject
@@ -56,6 +58,7 @@ navigator.mediaDevices.getUserMedia({ video: true })
   displayErrorMessage("There was an error with accessing the camera stream: " + err.name, err);
   //console.log(err.name + ": " + err.message);
 });
+
 
 // Mobile browsers cannot play video without user input,
 // so here we're using a button to start it manually.
@@ -132,27 +135,8 @@ upload_photo_btn.addEventListener("click", function(e){
       console.log('done!');
       document.location.href = url;
   });
-
-
-  /*
-  var form = $('#fileUploadForm')[0];
-  var data = new FormData(form);
-  data.append('snapshot', 'hellpz');//image.getAttribute('src'));
-
-  $.ajax({
-    url: "/result",
-    data: data,
-    cache: false,
-    contentType: false,
-    processData: false,
-    enctype: 'multipart/form-data',
-    method: 'POST',
-    type: 'POST', // For jQuery < 1.9
-    success: function(data){
-        alert(data);
-    }
-  });*/
 });
+
 
 function showVideo(){
   // Display the video stream and the controls.
@@ -207,6 +191,7 @@ function hideUI(){
   snap.classList.add("hide");
   error_message.classList.add("hide");
 }
+
 
 function base64ToBlob(base64, mime){
     // Helper function to convert a base64 image to Blob

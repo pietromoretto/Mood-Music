@@ -1,11 +1,21 @@
 {% extends 'mood_music/base.html' %}
 
 {% block content %}
-  <div class="container">
+  <div class="container center">
     {% if emotion == "" %}
-      <h1>Something went wrong!</h1>
+      <h2>Something went wrong!</h2>
     {% else %}
-      <h1>Emotion: {{ emotion }}</h1>
+      <h2>Your emotion is...</h2>
+      <h2>{{ emotion }}</h2>
+
+      {% for info in tracks_info %}
+        <div class="divider"></div>
+          <div class="section">
+          {% for key, value in info.items %}
+              <p><b>{{ key }}</b>: {{ value }}</p>
+          {% endfor %}
+          </div>
+      {% endfor %}
     {% endif %}
   </div>
 {% endblock %}

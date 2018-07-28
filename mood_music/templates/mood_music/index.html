@@ -9,24 +9,24 @@
 {% endblock %}
 
 {% block content %}
-  <div class="container">
-    <h2 class="header center orange-text">HOW ARE YOU?</h2>
+  <div class="container center">
+    <h2 class="header">HOW ARE YOU?</h2>
 
-    <div class="row center hide-on-large-only">
+    <div class="row hide-on-large-only">
       <a id="start-camera" class="waves-effect waves-light blue darken-3 btn">Touch here to start the app</a>
     </div>
 
-    <div class="row center">
+    <div class="row">
       <video class="show-on-large responsive-video" id="camera-stream"></video>
       <!-- Hidden image for the screenshot src -->
       <img id="snap" class="hide">
     </div>
 
-    <div class="row center">
+    <div class="row">
       <p id="error-message" class="flow-text hide"></p>
     </div>
 
-    <div class="row center hide" id="controls">
+    <div class="row hide" id="controls">
       <div class="col s4">
         <a id="delete-photo" title="Delete Photo" class="btn-floating btn-large waves-effect waves-light red darken-1 disabled"><i class="material-icons">delete</i></a>
       </div>
@@ -41,8 +41,6 @@
     <!-- Hidden canvas element. Used for taking snapshot of video. -->
     <canvas class="hide"></canvas>
 
-    <form action="/result" method="post" enctype="multipart/form-data" class="hide" id="fileUploadForm">
-    </form>
     <br>
   </div>
 {% endblock %}
