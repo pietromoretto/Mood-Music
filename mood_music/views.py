@@ -6,6 +6,9 @@ from .emotion_recognition import emotion_recognition
 from django.conf import settings
 import os
 
+# Global variable to solve problems with value due to multiple renderings
+emotion = ""
+
 
 def index(request):
     return render(request, 'mood_music/index.html')
@@ -13,6 +16,7 @@ def index(request):
 
 @csrf_exempt
 def result(request):
+    global emotion
     if request.method == 'POST' and request.FILES['snapshot']:
         snapshot = request.FILES['snapshot']
         fs = FileSystemStorage()
@@ -21,11 +25,9 @@ def result(request):
         filename = fs.save('snap-' + datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3], snapshot)
         filepath = os.path.join(settings.BASE_DIR, 'media', filename)
 
-
         emotion = emotion_recognition(filepath)
-        print(emotion)
 
         if os.path.exists(filepath):
             os.remove(filepath)
-        return render(request, 'mood_music/result.html', {'emotion': emotion})
-    return render(request, 'mood_music/result.html')
+
+    return render(request, 'mood_music/result.html', {'emotion': emotion})

@@ -15,7 +15,7 @@ def emotion_recognition(img_path):
 	model = model_from_json(open(pwd + '/elaboration_files/facial_expression_model_structure.json', 'r').read())
 	model.load_weights(pwd + '/elaboration_files/facial_expression_model_weights.h5')
 
-	emotions = ('angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral')
+	emotions = ('ANGRY', 'DISGUST', 'FEAR', 'HAPPY', 'SAD', 'SURPRISE', 'NEUTRAL')
 
 	img = cv2.imread(img_path)
 	gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
