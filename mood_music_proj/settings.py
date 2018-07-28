@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = True
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'opjkw8p2*g+co#fo(+j-&t6aodu4u)^cbx7ytj$6^4635q#@r+'
+SECRET_KEY = os.environ.get('SECRET_KEY_MM')
 
 ALLOWED_HOSTS = ['moodmusic.pythonanywhere.com', '127.0.0.1']
 
