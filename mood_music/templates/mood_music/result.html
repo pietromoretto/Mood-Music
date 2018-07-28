@@ -2,6 +2,13 @@
 
 {% block content %}
   <div class="container">
-    <h1>UPLOAD <b>DONE</b></h1>
+    <h1>Emotion: {{ emotion.as_p }}</h1>
+    <!--
+    {% if emotion == "" %}
+      <h1>Something went wrong!</h1>
+    {% else %}
+
+    {% endif %}
+-->
   </div>
 {% endblock %}

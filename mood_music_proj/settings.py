@@ -114,7 +114,7 @@ USE_L10N = True
 USE_TZ = True
 
 LOGIN_REDIRECT_URL = '/'
-SECURE_SSL_REDIRECT = True  # Works only in production
+#SECURE_SSL_REDIRECT = True  # Works only in production
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/

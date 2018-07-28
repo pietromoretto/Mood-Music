@@ -21,8 +21,11 @@ def result(request):
         filename = fs.save('snap-' + datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3], snapshot)
         filepath = os.path.join(settings.BASE_DIR, 'media', filename)
 
-        print(emotion_recognition(filepath))
+
+        emotion = emotion_recognition(filepath)
+        print(emotion)
 
         if os.path.exists(filepath):
             os.remove(filepath)
+        return render(request, 'mood_music/result.html', {'emotion': emotion})
     return render(request, 'mood_music/result.html')
