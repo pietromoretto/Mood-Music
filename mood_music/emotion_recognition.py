@@ -2,6 +2,7 @@ import numpy as np
 import cv2
 from keras.preprocessing import image
 from keras.models import model_from_json
+from keras import backend as K
 import os
 
 pwd = os.path.dirname(os.path.realpath(__file__))  # Current directory
@@ -35,6 +36,7 @@ def emotion_recognition(img_path):
 		img_pixels /= 255
 		# Store probabilities of 7 expressions
 		predictions = model.predict(img_pixels)
+		K.clear_session()
 
 	# Return the most probable emotion
 	return emotions[np.argmax(predictions[0])]
