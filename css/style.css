@@ -1,0 +1,61 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+*{
+  padding: 0;
+  margin: 0;
+}
+
+a{
+  cursor: pointer;
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+.show-on-large{
+  width: 100%;
+}
+
+#camera-stream{
+    max-height: 700px;
+    border-radius: 14px;
+    background: #ccc;
+    margin: 0 auto;
+}
+
+#snap{
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    border-radius: 14px;
+}
+
+#error-message{
+    width: 100%;
+    background-color: #ccc;
+    color: #757575;
+    border-radius: 14px;
+    padding: 20%;
+}
+
+/* for Tablet and Below */
+@media only screen and (max-width: 992px) {
+  .show-on-large {
+    display: none !important;
+  }
+}
+
+/* for Mobile Only
+@media(max-width: 600px){
+}*/
