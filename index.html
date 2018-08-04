@@ -18,7 +18,7 @@
     </div>
   </nav>
 
-<!--Effective content-->
+<!-- Effective content -->
   <div class="container center">
   <div class="container" id="index">
 
@@ -29,6 +29,7 @@
     </div>
 
     <div class="row">
+
       <video class="show-on-large responsive-video" id="camera-stream" width="640" height="480"></video>
     </div>
 
@@ -46,6 +47,13 @@
 
     <h2>You are...<br><span class="orange-text" id="real_emotion"></span></h2>
     <h4>Listen to these songs!</h4>
+
+    <br>
+    <div class="row">
+      <div class="video-container">
+        <div id="player"></div>
+      </div>
+    </div>
     <br>
 
     <div class="preloader-wrapper big active" id="loader">
@@ -61,7 +69,7 @@
     </div>
   </div>
   </div>
-<!--End of effective content-->
+<!-- End of effective content -->
 
   <br>
   <footer class="page-footer blue">
@@ -81,7 +89,6 @@
   </footer>
 
   <!--Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.min.js"></script>
   <script src="js/utils.js"></script>
   <script src="js/clmtrackr.js"></script>
@@ -91,5 +98,11 @@
   <script src="js/webcam.js"></script>
   <script src="js/emotion_tracking.js"></script>
   <script src="js/tracks.js"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};loadClient()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+  </script>
+  <script src="js/youtube.js"></script>
   </body>
 </html>
