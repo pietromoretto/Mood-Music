@@ -25,11 +25,10 @@
     <h2 class="header orange-text">HOW ARE YOU?</h2>
 
     <div class="row hide-on-large-only">
-      <a id="start-camera" class="waves-effect waves-light blue darken-3 btn">Touch here to start the app</a>
+      <a id="start-camera" class="waves-effect waves-light blue darken-3 btn">Touch here to start</a>
     </div>
 
     <div class="row">
-
       <video class="show-on-large responsive-video" id="camera-stream" width="640" height="480"></video>
     </div>
 
@@ -49,13 +48,10 @@
     <h4>Listen to these songs!</h4>
 
     <br>
-    <div class="row">
-      <div class="video-container">
-        <div id="player"></div>
-      </div>
-    </div>
-    <br>
+    <div id="playlist-container" class="row"></div>
+    <div id="tracks" class="row"></div>
 
+    <!-- Loader -->
     <div class="preloader-wrapper big active" id="loader">
       <div class="spinner-layer spinner-blue">
         <div class="circle-clipper left">
@@ -67,6 +63,11 @@
         </div>
       </div>
     </div>
+
+    <div id="retry" class="row">
+      <a href="" class="waves-effect waves-light blue darken-3 btn"><i class="material-icons left">refresh</i>RETRY</a>
+    </div>
+
   </div>
   </div>
 <!-- End of effective content -->
@@ -76,14 +77,14 @@
     <div class="container">
       <div class="row">
         <div class="col s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+          <h5 class="white-text">How it works</h5>
+          <p class="grey-text text-lighten-4">TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO </p>
         </div>
       </div>
     </div>
     <div class="footer-copyright">
       <div class="container">
-      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      Made by <a class="orange-text text-lighten-3" href="https://github.com/pietromoretto">Pietro Moretto</a>
       </div>
     </div>
   </footer>
@@ -98,11 +99,11 @@
   <script src="js/webcam.js"></script>
   <script src="js/emotion_tracking.js"></script>
   <script src="js/tracks.js"></script>
-  <script src="https://www.youtube.com/iframe_api"></script>
-  <script async defer src="https://apis.google.com/js/api.js"
+  <script src="js/youtube.js"></script>
+  <script src="https://apis.google.com/js/api.js"
       onload="this.onload=function(){};loadClient()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
   </script>
-  <script src="js/youtube.js"></script>
+
   </body>
 </html>

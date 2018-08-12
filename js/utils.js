@@ -1,3 +1,15 @@
+// Dictionary to keep values of valence and arousal for the Musicovery request
+var valence_arousal_dict = {
+      'ANGRY': [getRandRange(600000, 900000), getRandRange(700000, 950000)],
+      'DISGUST': [getRandRange(100000, 300000), getRandRange(300000, 500000)],
+      'FEAR': [getRandRange(400000, 600000), getRandRange(700000, 900000)],
+      'HAPPY': [getRandRange(850000, 1000000), getRandRange(700000, 1000000)],
+      'SAD': [getRandRange(50000, 200000), getRandRange(50000, 300000)],
+      'SURPRISE': [getRandRange(500000, 800000), getRandRange(800000, 1000000)],
+      'NEUTRAL': [getRandRange(300000, 700000), getRandRange(400000, 700000)]
+};
+
+
 // helper functions
 
 /**
