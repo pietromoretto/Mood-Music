@@ -12,22 +12,26 @@ function searchAndAddTrack(title, artist, genre, release_date) {
   });
 
   request.execute(function(response) {
-    var videoId = response.result.items[0].id.videoId;
-    var thumbnail_url = response.result.items[0].snippet.thumbnails.default.url;
+    try {
+      var videoId = response.result.items[0].id.videoId;
+      var thumbnail_url = response.result.items[0].snippet.thumbnails.default.url;
+    } catch (e) {
+      videoId = '';
+    } finally {
+      if(videoId != ''){
+        // Add track
+        result.innerHTML += '<div class="divider"></div>';
+        var section = document.createElement('div');
+        section.classList.add('section');
 
-    if(videoId != undefined){
-      // Add track
-      result.innerHTML += '<div class="divider"></div>';
-      var section = document.createElement('div');
-      section.classList.add('section');
+        section.innerHTML = '<img src="' + thumbnail_url + '"><br>';
+        section.innerHTML += '<a target="_blank" href="' + 'https://www.youtube.com/watch?v=' + videoId + '"><b>' + title + '</b></a><br>';
+        section.innerHTML += '<b>Artist: </b>' + artist + '<br><b>Genre: </b>' + genre + '<br><b>Release Date: </b>' + release_date;
 
-      section.innerHTML = '<img src="' + thumbnail_url + '"><br>';
-      section.innerHTML += '<a target="_blank" href="' + 'https://www.youtube.com/watch?v=' + videoId + '"><b>' + title + '</b></a><br>';
-      section.innerHTML += '<b>Artist: </b>' + artist + '<br><b>Genre: </b>' + genre + '<br><b>Release Date: </b>' + release_date;
+        result.appendChild(section);
 
-      result.appendChild(section);
-
-      tracksId.push(videoId);
+        tracksId.push(videoId);
+      }
     }
 
     counter += 1;
