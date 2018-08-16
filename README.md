@@ -1,6 +1,3 @@
-# mood-music
-:musical_note: Music based on Your Mood
-
 # Mood Music
 > Music based on your Mood
 
