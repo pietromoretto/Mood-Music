@@ -3,7 +3,7 @@ var result_number = 15
 
 function getTracksInfo() {
   // Make request to Musicovery with custom values of valence and arousal
-  var req = 'https://cors.io/?http://musicovery.com/api/V5/playlist.php?&fct=getfrommood&popularitymax=100&popularitymin=0&trackvalence=' + valence_arousal_dict[emotion][0] + '&trackarousal=' + valence_arousal_dict[emotion][1] + '&resultsnumber=' + result_number + '&format=json';
+  var req = 'http://musicovery.com/api/V5/playlist.php?&fct=getfrommood&popularitymax=100&popularitymin=0&trackvalence=' + valence_arousal_dict[emotion][0] + '&trackarousal=' + valence_arousal_dict[emotion][1] + '&resultsnumber=' + result_number + '&format=json';
 
   httpGetAsync(req, function(data){
       // Throw away first 190 characters to read correctly the JSON file
