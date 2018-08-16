@@ -13,9 +13,10 @@ Click this link for the working live demo: [Mood Music](https://pietromoretto.gi
 
 Express your emotion by looking at the video and press the "Take Photo" button and...
 
-![](1.png)
+![](1.png)  
 
 ... get the result page with the songs.
+
 ![](2.png)
 
 ## Built With
